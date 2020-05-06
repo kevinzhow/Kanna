@@ -170,7 +170,7 @@ public protocol XMLElement: SearchableNode {
     func addNextSibling(_ node: XMLElement)
     func removeChild(_ node: XMLElement)
     func remove()
-    func update()
+    var nodePtr: xmlNodePtr { get }
     var nextSibling: XMLElement? { get }
     var previousSibling: XMLElement? { get }
 }

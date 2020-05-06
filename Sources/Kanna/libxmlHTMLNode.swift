@@ -106,7 +106,7 @@ final class libxmlHTMLNode: XMLElement {
     private weak var weakDocument: XMLDocument?
     private var document: XMLDocument?
     private var docPtr: htmlDocPtr
-    private var nodePtr: xmlNodePtr
+    var nodePtr: xmlNodePtr
     private var doc: XMLDocument? {
         weakDocument ?? document
     }
@@ -192,18 +192,8 @@ final class libxmlHTMLNode: XMLElement {
     }
 
     func remove() {
-        guard let node = self as? libxmlHTMLNode else {
-            return
-        }
-        xmlUnlinkNode(node.nodePtr)
-        xmlFree(node.nodePtr)
-    }
-
-    func update() {
-        guard let node = self as? libxmlHTMLNode else {
-            return
-        }
-        xmlReplaceNode(nodePtr, node.nodePtr)
+        xmlUnlinkNode(self.nodePtr)
+        xmlFree(self.nodePtr)
     }
 
     private func node(from ptr: xmlNodePtr?) -> XMLElement? {
