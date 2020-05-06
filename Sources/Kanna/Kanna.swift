@@ -154,7 +154,7 @@ public protocol SearchableNode: Searchable {
     var toHTML: String? { get }
     var toXML: String? { get }
     var innerHTML: String? { get }
-    var className: String? { get }
+    var className: String? { get set }
     var tagName: String? { get set }
     var content: String? { get set }
 }

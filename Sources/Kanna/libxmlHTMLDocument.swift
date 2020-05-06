@@ -140,6 +140,7 @@ extension String.Encoding {
 libxmlHTMLDocument
 */
 final class libxmlHTMLDocument: HTMLDocument {
+
     private var docPtr: htmlDocPtr?
     private var rootNode: XMLElement?
     private var html: String
@@ -175,7 +176,10 @@ final class libxmlHTMLDocument: HTMLDocument {
 
     var innerHTML: String? { rootNode?.innerHTML }
 
-    var className: String? { nil }
+    var className: String? {
+        get { nil }
+        set {}
+    }
 
     var tagName: String? {
         get { nil }
@@ -235,6 +239,7 @@ final class libxmlHTMLDocument: HTMLDocument {
 libxmlXMLDocument
 */
 final class libxmlXMLDocument: XMLDocument {
+
     private var docPtr: xmlDocPtr?
     private var rootNode: XMLElement?
     private var xml: String
@@ -270,7 +275,10 @@ final class libxmlXMLDocument: XMLDocument {
 
     var innerHTML: String? { rootNode?.innerHTML }
 
-    var className: String? { nil }
+    var className: String? {
+        get { nil }
+        set {}
+    }
 
     var tagName: String? {
         get { nil }
