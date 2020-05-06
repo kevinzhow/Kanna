@@ -57,7 +57,13 @@ final class libxmlHTMLNode: XMLElement {
     }
 
     var className: String? {
-        self["class"]
+        get {
+            self["class"]
+        }
+        
+        set {
+            self["class"] = newValue
+        }
     }
 
     var tagName: String? {
