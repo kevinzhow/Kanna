@@ -139,7 +139,7 @@ extension String.Encoding {
 /*
 libxmlHTMLDocument
 */
-public final class libxmlHTMLDocument: HTMLDocument {
+final class libxmlHTMLDocument: HTMLDocument {
     private var docPtr: htmlDocPtr?
     private var rootNode: XMLElement?
     private var html: String

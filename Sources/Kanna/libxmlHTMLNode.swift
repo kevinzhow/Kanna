@@ -28,7 +28,7 @@ import libxml2
 /**
 libxmlHTMLNode
 */
-public final class libxmlHTMLNode: XMLElement {
+final class libxmlHTMLNode: XMLElement {
     var text: String? {
         return libxmlGetNodeContent(nodePtr)
     }
