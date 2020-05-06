@@ -199,6 +199,13 @@ final class libxmlHTMLNode: XMLElement {
         xmlFree(node.nodePtr)
     }
 
+    func update() {
+        guard let node = self as? libxmlHTMLNode else {
+            return
+        }
+        xmlReplaceNode(nodePtr, node.nodePtr)
+    }
+
     private func node(from ptr: xmlNodePtr?) -> XMLElement? {
         guard let doc = doc, let nodePtr = ptr else {
             return nil
