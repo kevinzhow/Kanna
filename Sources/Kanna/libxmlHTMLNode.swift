@@ -29,6 +29,7 @@ import libxml2
 libxmlHTMLNode
 */
 final class libxmlHTMLNode: XMLElement {
+
     var text: String? {
         return libxmlGetNodeContent(nodePtr)
     }
@@ -60,7 +61,7 @@ final class libxmlHTMLNode: XMLElement {
         get {
             self["class"]
         }
-        
+
         set {
             self["class"] = newValue
         }
@@ -98,6 +99,12 @@ final class libxmlHTMLNode: XMLElement {
             if let node = newValue as? libxmlHTMLNode {
                 node.addChild(self)
             }
+        }
+    }
+
+    var children: XMLElement {
+        get {
+            return libxmlHTMLNode(document: doc, docPtr: docPtr, node: nodePtr.pointee.children)
         }
     }
 
