@@ -124,7 +124,7 @@ final class libxmlHTMLNode: XMLElement {
     }
 
     private weak var weakDocument: XMLDocument?
-    private var document: XMLDocument?
+    var document: XMLDocument?
     private var docPtr: htmlDocPtr
     var nodePtr: xmlNodePtr
     private var doc: XMLDocument? {

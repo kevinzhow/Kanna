@@ -164,28 +164,16 @@ class KannaHTMLTests: XCTestCase {
         XCTAssert(node.text == "target")
     }
 
-    func testChildren() {
-        let html = "<html><head><meta http-equiv='content-type' content='text/html; charset=LATIN1'></head><body><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div></body></html>"
+    func testChildrenToParent() {
+        let html = "<html><head><meta http-equiv='content-type' content='text/html; charset=LATIN1'></head><body><div>hi!<!-- bye~ --></div></body></html>"
         guard let doc = try? HTML(html: html, encoding: .utf8),
-            let nodes = doc.body?.children else {
+            let parent = doc.body?.children.first?.parent?.parent else {
                 XCTFail("Abnormal test data")
                 return
         }
 
-        XCTAssert(nodes.count == 4)
+//        XCTAssert(nodes.count == 4)
     }
-
-    func testCSSChildren() {
-        let html = "<html><head><meta http-equiv='content-type' content='text/html; charset=LATIN1'></head><body><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div></body></html>"
-        guard let doc = try? HTML(html: html, encoding: .utf8),
-            let nodes = doc.body?.xpath("/*") else {
-                XCTFail("Abnormal test data")
-                return
-        }
-
-        XCTAssert(nodes.count == 4)
-    }
-
 
     func testOutOfDocument() {
         let filename = "test_HTML4"
