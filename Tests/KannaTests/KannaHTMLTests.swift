@@ -164,6 +164,17 @@ class KannaHTMLTests: XCTestCase {
         XCTAssert(node.text == "target")
     }
 
+    func testChildren() {
+        let html = "<html><head><meta http-equiv='content-type' content='text/html; charset=LATIN1'></head><body><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div><div>hi!<!-- bye~ --></div></body></html>"
+        guard let doc = try? HTML(html: html, encoding: .utf8),
+            let nodes = doc.body?.children else {
+                XCTFail("Abnormal test data")
+                return
+        }
+
+        XCTAssert(nodes.count == 4)
+    }
+
     func testOutOfDocument() {
         let filename = "test_HTML4"
         guard let path = Bundle(for: KannaHTMLTests.self).path(forResource: filename, ofType: "html") else {

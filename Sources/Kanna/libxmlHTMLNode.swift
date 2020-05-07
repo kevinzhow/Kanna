@@ -102,9 +102,16 @@ final class libxmlHTMLNode: XMLElement {
         }
     }
 
-    var children: XMLElement {
+    var children: [XMLElement] {
         get {
-            return libxmlHTMLNode(document: doc, docPtr: docPtr, node: nodePtr.pointee.children)
+            var array: [XMLElement] = []
+            var childNodePointer = nodePtr.pointee.children
+            while childNodePointer != nil {
+                let childNode = libxmlHTMLNode(document: doc, docPtr: docPtr, node: nodePtr.pointee.children)
+                array.append(childNode)
+                childNodePointer = childNodePointer?.pointee.next
+            }
+            return array
         }
     }
 
